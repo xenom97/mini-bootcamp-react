@@ -1,21 +1,21 @@
 import PropTypes from "prop-types";
-import "./index.css";
+import BaseCard from "../Base/Card";
 
-const NoteList = ({ notes }) => {
-  const list = () => {
-    return notes.map((note, idx) => (
-      <li className="list-item" key={idx}>
-        <h3>{note.title}</h3>
-        <p>{note.content}</p>
-      </li>
-    ));
-  };
-
-  return <ul className="list-container">{list()}</ul>;
+const NoteList = ({ notes, onDelete }) => {
+  return notes.map((note) => (
+    <BaseCard
+      key={note.id}
+      title={note.title}
+      content={note.content}
+      action={() => onDelete(note.id)}
+      actionText="Delete"
+    />
+  ));
 };
 
 NoteList.propTypes = {
   notes: PropTypes.array.isRequired,
+  onDelete: PropTypes.func.isRequired,
 };
 
 export default NoteList;

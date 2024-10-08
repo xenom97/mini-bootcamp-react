@@ -20,11 +20,16 @@ function Home() {
     setNotes([...notes, note]);
   };
 
+  const deleteNote = (id) => {
+    const newNotes = notes.filter((note) => note.id !== id);
+    setNotes(newNotes);
+  };
+
   return (
     <main className="container">
       <BaseNavbar />
       <NoteForm onAdd={addNote} />
-      <NoteList notes={notes} />
+      <NoteList notes={notes} onDelete={deleteNote} />
     </main>
   );
 }
