@@ -1,9 +1,8 @@
 import { useState } from "react";
-import "./App.css";
-import NoteForm from "./components/NoteForm/index";
-import NoteList from "./components/NoteList";
+import NoteForm from "../components/NoteForm/index";
+import NoteList from "../components/NoteList";
 
-function App() {
+function Home() {
   const [notes, setNotes] = useState([]);
 
   const addNote = (note) => {
@@ -18,4 +17,4 @@ function App() {
   );
 }
 
-export default App;
+export default Home;
