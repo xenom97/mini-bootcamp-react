@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import BaseInput from "../components/Base/Input";
 import BaseButton from "../components/Base/Button";
 import { useNavigate } from "react-router-dom";
+import AuthContext from "../context/AuthContext";
 
 import "./login.css";
 
@@ -10,9 +11,11 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
+  const { login } = useContext(AuthContext);
+
   const handleLogin = () => {
     if (username && password) {
-      // TODO; Simpan current user data ke Context
+      login({ username, password });
       window.alert("Login Success");
       navigate("/", { replace: true });
     }
